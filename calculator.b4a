@@ -1,0 +1,92 @@
+﻿Build1=Default,b4a.calculator
+File1=calculator.bal
+FileGroup1=Default Group
+Group=Default Group
+Library1=core
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="19"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'End of default text.~\n~
+Module1=Starter
+NumberOfFiles=1
+NumberOfLibraries=1
+NumberOfModules=1
+Version=11.8
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: calculator
+	#VersionCode: 1
+	#VersionName: 
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: true
+	#BridgeLogger: True 
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: true
+	#IncludeTitle: false
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	'These variables can only be accessed from this module.
+
+	Private lbl1 As Label
+	Private lbl2 As Label
+	Private sp1 As Spinner
+	Private et1 As EditText
+	Private et2 As EditText
+	Private lbl3 As Label
+	Private lblrs As Label
+	Dim amalgar(4) As String
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	'Do not forget to load the layout file created with the visual designer. For example:
+	Activity.LoadLayout("calculator")
+	amalgar(0)="+"
+	amalgar(1)="-"
+	amalgar(2)="*"
+	amalgar(3)="/"
+	sp1.AddAll(amalgar)
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+
+Sub sp1_ItemClick (Position As Int, Value As Object)
+	If et1.Text <> "" And et2.Text <> "" Then
+		Log(et1.Text)
+		Log(et2.Text)
+		If sp1.SelectedIndex=0 Then
+			'If et1.Text <> Null And et2.Text <> Null Then
+				lblrs.Text=et1.Text+et2.Text
+			'End If
+		End If
+		If sp1.SelectedIndex=1 Then
+			'If et1.Text <> Null And et2.Text <> Null Then
+				lblrs.Text=et1.Text-et2.Text
+			'End If
+		End If
+		If sp1.SelectedIndex=2 Then
+		'	If et1.Text <> Null And et2.Text <> Null Then
+				lblrs.Text=et1.Text*et2.Text
+		'	End If
+		End If
+		If sp1.SelectedIndex=3 Then
+		'	If et1.Text <> Null And et2.Text <> Null Then
+				lblrs.Text=et1.Text/et2.Text
+		'	End If
+		End If
+	End If
+End Sub
